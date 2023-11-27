@@ -81,6 +81,27 @@ header h2 {
 img {
     width: 100%;
     margin: 1rem 0;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+img:hover {
+    border-bottom: 2px solid #26b1db;
+}
+
+figure {
+    margin: 2rem 0;
+    line-height: 1rem;
+}
+
+figure img {
+    margin: 0;
+}
+
+figcaption {
+    font-size: 0.7rem;
+    text-align: right;
+    color: #666;
 }
 
 ul,

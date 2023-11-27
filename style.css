@@ -154,6 +154,11 @@ a:hover {
 }
 
 @media (prefers-color-scheme: light) {
+
+    html {
+        background: #d0d0d0;
+    }
+
     body {
         color: #2f2f2f;
         background: #e1e1e1;
@@ -165,10 +170,6 @@ a:hover {
         color: #a16e2f
     }
 
-    section {
-        border-left: 1.5px solid #bb8e58;
-    }
-
     a {
         text-decoration: none;
         color: #138397;
@@ -177,6 +178,23 @@ a:hover {
     a:hover {
         color: #004955;
         border-bottom: 1px dotted #004955;
+    }
+
+    .date {
+        color: #999;
+    }
+
+    b {
+        color: #111;
+    }
+
+    blockquote {
+        background: #d0d0d0;
+    }
+
+    code {
+        background: #ccc;
+        color: #845c27
     }
 }
 

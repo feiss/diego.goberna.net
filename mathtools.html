@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diego.goberna.net - Mathtools</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <script src='res/g9.js'></script>
+    <script src='res/victor.min.js'></script>
+    <style>
+        #canvas {
+            margin: 1rem auto;
+        }
+
+        #canvas,
+        svg {
+            width: 600px;
+            height: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <header><a href="index.html">&larr; back to index</a></header>
+
+    <h1>Mathtools</h1>
+    <p class="date">Dec 2, 2023</p>
+
+    <p>
+        A dot product visualizer using the awesome <a href="https://omrelli.ug/g9/gallery/" target="_blank">g9.js</a>
+        library.
+    </p>
+    <p>
+        Drag the <span style="color:#faa">&bigcirc;</span> <span style="color:#aaf">&bigcirc;</span> circles around.
+    </p>
+
+    <div id="canvas"></div>
+
+    <p><b>g9 is very impressive</b>. In this simple case I didn't
+        have to add almost any logic for the interaction. You just have to provide an object with the data that is gonna
+        be interactive with the mouse, and a function handler where you will receive the canvas context and a copy of
+        the data provided, but with the values updated. And it magically works!.
+        You can just inspect the source of this web page.
+    </p>
+    <p>
+        Don't miss the examples in their <a href="https://omrelli.ug/g9/gallery/" target="_blank">website</a>.
+
+    </p>
+
+    <hr>
+
+    <p>I planned to make more visualizations like this but <code>¯\_(ツ)_/¯</code></p>
+
+
+
+
+
+    <footer><a href="index.html">&larr; back to index</a></footer>
+
+    <script>
+        var initialData = {
+            ax: 0,
+            ay: 120,
+            bx: 120,
+            by: 0
+        }
+
+        function pad(v) {
+            return Math.floor(v * 100) / 100;
+        }
+
+        function render(data, ctx) {
+            const line_props = { 'stroke-width': 3, 'stroke-linecap': 'round' };
+            const font_props = {
+                'font-family': 'monospace',
+                'font-size': '16px',
+            };
+            let text_pos = new Victor(-ctx.width / 2 + 15, ctx.height / 2 - 85);
+
+            // background
+            ctx.rect(-ctx.width / 2, -ctx.height / 2, ctx.width, ctx.height, { 'fill': '#333' });
+
+            ctx.line(-ctx.width / 2, 0, ctx.width, 0, { 'stroke': '#222' });
+            ctx.line(0, -ctx.height / 2, 0, ctx.height, { 'stroke': '#222' });
+
+
+            // a
+            const a = new Victor(data.ax, data.ay).normalize();
+            line_props.stroke = "#f55"
+            font_props.fill = "#f88";
+            ctx.text(`A: ${pad(a.angle())}, ${pad(a.angle() * 180 / Math.PI)}º`, text_pos.x, text_pos.y, font_props);
+            ctx.point(data.ax, data.ay, { 'stroke': '#faa', 'fill': '#333', 'r': 7 });
+            ctx.line(0, 0, a.x * 100, a.y * 100, line_props);
+
+            // b
+            const b = new Victor(data.bx, data.by).normalize();
+            line_props.stroke = "#55f"
+            font_props.fill = "#88f";
+            ctx.text(`B: ${pad(b.angle())}, ${pad(b.angle() * 180 / Math.PI)}º`, text_pos.x, text_pos.y + 20, font_props);
+            ctx.circle(data.bx, data.by, { 'stroke': '#aaf', 'fill': '#333', 'r': 7 });
+            ctx.line(0, 0, b.x * 100, b.y * 100, line_props);
+
+            // dot
+
+            const c = a.dot(b);
+
+            line_props.stroke = "#fff"
+            line_props['stroke-width'] = 5;
+            font_props.fill = "#fff";
+
+            ctx.line(0, 0, a.x * c * 100, a.y * c * 100, line_props);
+            ctx.text('a.dot(b): ' + pad(c), text_pos.x, text_pos.y + 40, font_props);
+
+        }
+        g9(initialData, render).insertInto("#canvas").resize(500, 500);
+    </script>
+</body>
+
+</html>

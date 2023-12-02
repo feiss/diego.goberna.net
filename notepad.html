@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diego.goberna.net - Notepad</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header><a href="index.html">&larr; back to index</a></header>
+
+    <h1>Notepad</h1>
+    <p class="date">2 Dec, 2023</p>
+
+    <p> Trying to create a simple alternative to <a href="https://obsidian.md/" target="_blank">Obsidian</a>
+        for my own needs. Also an excuse to learn how to make a web server using <b>Rust</b> with <a
+            href="https://crates.io/crates/axum" target="_blank">Axum</a>.
+    </p>
+
+    <div style="display:flex;gap:1rem">
+        <img class="half" src="res/notepad01.jpg" alt="screenshot">
+        <img class="half" src="res/notepad02.jpg" alt="screenshot">
+    </div>
+
+    <p>For the client, I used:
+    <ul>
+        <li>Vanilla html and js</li>
+        <li><a href="https://github.com/markdown-it/markdown-it" target="_blank">Markdown-it</a> for syntax coloring
+            Markdown</li>
+        <li><a href="https://highlightjs.org/">highlight.js</a> for syntax coloring code blocks inside Markdown</li>
+        <li>For the text editor I didn't like the alternatives I tried (too bloated, hard to tame) and made my basic
+            editor using a regular textarea hidden behind a synchronized div for syntax coloring.
+            You can alternate between view and edit modes.
+        </li>
+    </ul>
+    </p>
+    <p>A little "innovation" I tried with this app was to create the idea of different <b>viewers</b> of the same
+        document. The only one I made is this, where you could see a calendar and all the lines with a date preceding
+        would be
+        detected and inserted in the calendar:</p>
+
+    <div style="display:flex;gap:1rem">
+        <img class="half" src="res/notepad03.jpg" alt="screenshot">
+        <img class="half" src="res/notepad04.jpg" alt="screenshot">
+    </div>
+
+    <p>..but the idea was to make more of them. You enter the data in a file and afterwards you can see that
+        content through different "smart" viewers that can extract the relevant information for them.
+        Another example could be a viewer that take a list of income vs expenses and draws a plot.
+    </p>
+
+    <p>I have this project in the "Finished" category because I don't actually use it :P and don't plan to keep working
+        on it, but it was usable with a decent amount of basic features.
+        But I still think the idea of viewers is quite powerful and interesting.. maybe for a standalone desktop
+        app? :/</p>
+
+    <footer><a href="index.html">&larr; back to index</a></footer>
+</body>
+
+</html>

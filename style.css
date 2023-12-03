@@ -65,6 +65,11 @@ footer {
     padding-top: 2rem;
 }
 
+header {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
 header h2 {
     margin-bottom: 1rem;
     margin-top: 0.5rem;

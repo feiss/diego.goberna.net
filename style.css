@@ -103,6 +103,15 @@ img.half {
     max-width: 48%;
 }
 
+a svg {
+    stroke: #0091bd;
+}
+
+a:hover svg {
+    stroke: #26b1db;
+}
+
+
 figure {
     margin: 2rem 0;
     line-height: 1rem;
